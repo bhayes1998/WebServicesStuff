@@ -1,0 +1,25 @@
+Script started on 2021-02-09 15:54:49-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"added","agent":"curl\/7.68.0"}
+Script done on 2021-02-09 15:54:49-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 15:55:34-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"added","agent":"curl\/7.68.0"}
+Script done on 2021-02-09 15:55:34-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 15:55:56-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0"}
+Script done on 2021-02-09 15:55:56-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 15:56:06-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0"}
+Script done on 2021-02-09 15:56:06-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 15:59:25-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0","value":"my roem"}
+Script done on 2021-02-09 15:59:25-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 15:59:39-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0","value":"1982"}
+Script done on 2021-02-09 15:59:39-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 16:00:10-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0","hash":"fb87582825f9d28a8d42c5e5e5e8b23d"}
+Script done on 2021-02-09 16:00:10-05:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2021-02-09 16:00:17-05:00 [TERM="xterm-256color" TTY="/dev/pts/23" COLUMNS="120" LINES="30"]
+{"status":"OK","msg":"","agent":"curl\/7.68.0","hash":"003db9315cab49c191899ef05dc6e27e"}
+Script done on 2021-02-09 16:00:17-05:00 [COMMAND_EXIT_CODE="0"]
+

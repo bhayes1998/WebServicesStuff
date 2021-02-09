@@ -1,0 +1,62 @@
+<!--
+    Bryan Hayes
+    CSE 451
+    2/10/2021
+    Assignment 2/8 Sending Data
+-->
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <title>Assignment 2/8 Sending Data</title> 
+    </head> 
+
+    <body> 
+        <div class="container" style="margin-left: 45%; ">
+        	<form>
+                <div class="form-group">
+                    <label>Enter a key here</label>
+                    <input class="form-control" id="keyInput" style="width: 20%;" placeholder="Key">
+                </div>
+                <div class="form-group">
+                    <label>Enter a value</label>
+                    <input class="form-control" id="valueInput" style="width: 20%;" placeholder="Value">
+                </div>
+                <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <script>
+        $(document).ready(function () {
+            $("#submitButton").click(function(evt) {
+                evt.preventDefault();
+                var key = $("#keyInput").val();
+                var value = $("#valueInput").val();
+                if (!key || !value){
+                    console.log("Error");
+                    return;
+                }
+                var data = {"uid":"campbest","password":"test", "key":key, "value":value};
+                var jsonDataString = JSON.stringify(data);
+                $.ajax({    
+                    "url": "https://ceclnx01.cec.miamioh.edu/~campbest/cse451-campbest-web-public-2021/kv/kv.php/api/v1/info",
+                    "method": "PUT",
+                    "data":  jsonDataString })
+                .done(function (response) {
+                    console.log(response);
+                    $("#keyInput").val("");
+                    $("#valueInput").val("");
+                })
+                .fail(function(error) {
+                    console.log(error);
+                });
+                    return;
+            });
+        });
+        </script>
+    </body>
+
+</html> 
