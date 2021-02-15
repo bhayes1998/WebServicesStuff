@@ -17,6 +17,7 @@ if(count($_POST)>0) {
 	$count  = mysqli_num_rows($result);
 	if($count==0) {
 		$message = "Invalid Username or Password!";
+		error_log("Failed login attempt", 0);
 
 	} else {
 		$_SESSION["uid"] = $_POST["userName"];

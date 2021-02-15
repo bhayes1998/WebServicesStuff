@@ -31,7 +31,7 @@ if (!isset($_SESSION["uid"])){
 		    location.reload();
                 })
                 .fail(function(error) {
-                    error_log(error, 0);
+                    console.log(error);
                 });
 }	
 
@@ -52,7 +52,7 @@ if (!isset($_SESSION["uid"])){
 		    $(".delete").click(deleteEvent);
                 })
                 .fail(function(error) {
-                    error_log(error, 0);
+                    console.log(error);
                 });
                     
         });
