@@ -11,11 +11,13 @@ if (isset($_SESSION["uid"])){
 
 require_once("config.php");
 $message="";
+$attempt="";
 if(count($_POST)>0) {
-	$conn = mysqli_connect("localhost",$name,$password,"auth");
+	$conn = mysqli_connect($host,$name,$password,"auth");
 	$result = mysqli_query($conn,"SELECT * FROM users WHERE name='" . $_POST["userName"] . "' and password = md5('". $_POST["password"]."')");
 	$count  = mysqli_num_rows($result);
 	if($count==0) {
+		$attempt = $_POST["userName"];
 		$message = "Invalid Username or Password!";
 		error_log("Failed login attempt", 0);
 
@@ -36,7 +38,7 @@ if(count($_POST)>0) {
 			</tr>
 			<tr class="tablerow">
 			<td>
-			<input id="nameInput" type="text" name="userName" placeholder="User Name" class="login-input"></td>
+			<input id="nameInput" type="text" name="userName" placeholder="User Name" value="<?php if ($attempt != "") { echo $attempt; } ?>" class="login-input"></td>
 			</tr>
 			<tr class="tablerow">
 			<td>
