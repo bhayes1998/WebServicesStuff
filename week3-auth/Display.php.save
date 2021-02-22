@@ -38,28 +38,30 @@ if (!isset($_SESSION["uid"])){
         $(document).ready(function () {
                 var data = {"uid":"campbest","password":"test"};
                 var jsonDataString = JSON.stringify(data);
-		$("#datatable").html("<tr><th>Values</th></tr><tr>");
                 $.ajax({    
                     "url": "https://ceclnx01.cec.miamioh.edu/~campbest/cse451-campbest-web-public-2021/kv/kv.php/api/v1/info",
                     "method": "GET",
                     "data":  jsonDataString })
                 .done(function (response) {
-			for (i in response.keys){
-				var responseData = {"uid":"campbest","password":"test","key":response.keys[i]};
-		                var responseString = JSON.stringify(responseData);
-				$.ajax({
-					"url": "https://ceclnx01.cec.miamioh.edu/~campbest/cse451-campbest-web-public-2021/kv/kv.php/api/v1/info",
-					"method": "POST",
-					"data": responseString })
-				.done(function (value) {
-					$("#datatable").append("<tr><td>" + value.value + "</td><td><button class='delete' key='" + response.keys[i] + "'>Delete</button></td></tr>");
-					$(".delete").click(deleteEvent);
-				
-				})
-			}
+		    var tablebody = "<tr><th>Keys</th></tr><tr>";
+		    for (i in response.keys) {
+			var newData = {"uid":"campbest","password":"test","key":response.key[i]};
+                	var newJsonDataString = JSON.stringify(data);
+                	$.ajax({
+                    		"url": "https://ceclnx01.cec.miamioh.edu/~campbest/cse451-campbest-web-public-2021/kv/kv.php/api/v1/info",
+                    		"method": "POST",
+                    		"data":  jsonDataString })
+                	.done(function (value) {
+                    		
+                	})
+                	.fail(function(error) {
+                    		console.log(error);
+                	});
 			
-				
-		    $("#datatable").append("</tr>");
+			tablebody += "<tr><td>" + i + "</td><td>" + response.keys[i] + "</td><td><button class='delete' key='" + response.keys[i] + "'>Delete</button></td></tr>";
+		    }
+		    tablebody += "</tr>";
+		    $("#datatable").html(tablebody);
 		    $(".delete").click(deleteEvent);
                 })
                 .fail(function(error) {
