@@ -35,11 +35,6 @@ if (isset($_REQUEST['logout'])) {
 <title>Week5 Assignment</title> 
 </head>
 <body>
-	<script>
-	function onClick(){
-		location.href("/Display.php");
-	}
-	</script>
 
 	<h1>Welcome <?php echo $user ?>!</h1>
 
