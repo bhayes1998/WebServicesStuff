@@ -48,6 +48,7 @@
 <a class='btn btn-info' href='./'>Home</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/about'>about</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/room'>Room Listing</a>
+<a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/room/add'>Add Room</a>
 </footer>
 
       </body>
