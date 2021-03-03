@@ -19,6 +19,7 @@ if (!isset($_SESSION["user"])){
 $lastSeen = 0;
 if (isset($_SESSION['lastSeen'])){
 	$lastSeen = $_SESSION['lastSeen'];
+
 	if ((time() - $lastSeen) > 60) { //15 minutes * 60 seconds per minute)
         	$_SESSION = array();
 		 header("Location: index.php"); die();
