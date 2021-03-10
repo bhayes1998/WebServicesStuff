@@ -14,11 +14,13 @@ class CreateRoomTable extends Migration
     public function up()
     {
         Schema::create('room', function (Blueprint $table) {
-            $table->id();
-	    $table->string('roomName');
+	    $table->id();
+	    $table->string('buildingName');
+	    $table->string('roomNum');
 	    $table->integer('capacity');
 	    $table->string('dept');
 	    $table->string('description');
+	    $table->string("image")->default('');
         });
     }
 

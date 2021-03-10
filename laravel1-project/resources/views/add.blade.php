@@ -7,8 +7,12 @@
 <form method="post" action="{{url('/room/add')}}">
   @csrf
   <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" name="roomName" value="{{ old('roomName') }}" placeholder="Enter name of the room">
+    <label>Building</label>
+    <input type="text" class="form-control" name="buildingName" value="{{ old('buildingName') }}" placeholder="Enter the building name">
+  </div>
+  <div class="form-group">
+    <label>Room Number</label>
+    <input type="text" class="form-control" name="roomNum" value="{{ old('roomNum') }}" placeholder="Enter number of the room">
   </div>
   <div class="form-group">
     <label>Capactiy</label>
