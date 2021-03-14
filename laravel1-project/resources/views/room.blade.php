@@ -2,6 +2,17 @@
 <x-slot name="title">
   Room List
 </x-slot>
+<x-slot name="SCRIPT">temp.js</x-slot>
+<div class='text-center' style='margin-bottom: 20px;'>
+<div id='display'>
+	<p style='display: inline'>The temperature in </p>
+	<p id='city' style='display: inline'></p>
+	<p style='display: inline'> right now is </p>
+	<p id='temp' style='display: inline'></p>
+	<p id='cache'></p>	
+</div>
+<div id='zipcodeinput'>
+Zipcode: <input type='text' id='zipcode' value='45056'></input</div>
 @if (session()->has('message'))
     	<div class="alert alert-success">
             {{ session('message') }}

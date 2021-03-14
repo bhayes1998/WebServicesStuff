@@ -37,7 +37,13 @@
       <div class="starter-template">
 	<h1>{{$pageTitle ?? 'Room Reservations'}}</h1>
       </div>
+      <div>
+	@isset($SCRIPT)
 
+		<script src="{{env('APP_URL')}}/{{$SCRIPT}}"></script>
+
+	@endisset
+      </div>
      <div class='content'>
 {{$slot}}
 </div>
