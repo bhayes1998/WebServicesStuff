@@ -31,11 +31,17 @@ class Weather extends Controller
                 array_shift($parts);
                 $clientZip = new Client([
                         'base_uri' => 'http://api.openweathermap.org/geo/1.0/',
-                ]);
+		]);
+
+		$APIKEY = env('OPENWEATHER_API_KEY');
+		if ($APIKEY == "") {
+      			die ("API KEY NOT DEFINED");
+		}
+
                 $responseZip = $clientZip->request('GET','zip',
                         ['query' => [
                                 'zip' => end($parts),
-                                'APPID' => 'b3ea9041c7b81868083b7016b2558f93'
+                                'APPID' => $APIKEY
                         ]]);
                 $bodyZip = $responseZip->getBody();
                 $jsonDataZip = json_decode($bodyZip,true);
