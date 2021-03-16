@@ -55,6 +55,7 @@
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/about'>about</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/room'>Room Listing</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/room/add'>Add Room</a>
+<a class='btn btn-info' href='https://hayesbm3.451.csi.miamioh.edu/cse451-hayesbm3-web/laravel1-project/public/index.php/todo'>Todoist</a>
 </footer>
 
       </body>

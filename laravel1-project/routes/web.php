@@ -30,6 +30,8 @@ Route::get('/about',function() {
 
 
 Route::get("/room",[RoomController::class,'index']);
-
+Route::get("/todo",function () {
+	return view('todo');
+});
 Route::get('/room/add', [RoomController::class,'add']);
 Route::post('/room/add', [RoomController::class, 'addRoom']);

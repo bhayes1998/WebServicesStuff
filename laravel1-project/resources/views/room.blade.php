@@ -12,7 +12,7 @@
 	<p id='cache'></p>	
 </div>
 <div id='zipcodeinput'>
-Zipcode: <input type='text' id='zipcode' value='45056'></input</div>
+Zipcode: <input type='text' id='zipcode' value='45056'></input></div>
 @if (session()->has('message'))
     	<div class="alert alert-success">
             {{ session('message') }}
