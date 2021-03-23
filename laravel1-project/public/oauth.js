@@ -11,7 +11,7 @@ function showTasks(event) {
 		success: (data) => {
 			$("#projects").html("");
 			console.log("projects",data);
-			if (data.content.length == 0)
+			if (data["status"] == "FAIL")
 				$("#projects").append("No tasks");
 			else
 			for (i=0,l=data.content.length;i<l;i++) {
