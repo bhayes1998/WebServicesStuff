@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TodoOAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,7 @@ Route::get("/room",[RoomController::class,'index']);
 Route::get("/todo",function () {
 	return view('todo');
 });
+Route::get("/todoistoauth", [TodoOAuthController::class, 'index']);
 Route::get('/room/add', [RoomController::class,'add']);
 Route::post('/room/add', [RoomController::class, 'addRoom']);
+Route::get('todoistoauth/logout', [TodoOAuthController::class, 'logout']);

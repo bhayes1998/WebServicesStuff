@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Weather;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TodoOAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('weather/{zipcode}', [Weather::class, 'index']);
 Route::get('todo/', [TodoController::class, 'index']);
+Route::get('todo/{token}/{projectID}', [TodoOAuthController::class, 'projects']);
+Route::get('todoistoauth/{cmd}', [TodoOAuthController::class, 'logout']);

@@ -30,7 +30,7 @@ class Weather extends Controller
 
                 array_shift($parts);
                 $clientZip = new Client([
-                        'base_uri' => 'http://api.openweathermap.org/geo/1.0/',
+                        'base_uri' => 'https://api.openweathermap.org/geo/1.0/',
 		]);
 
 		$APIKEY = env('OPENWEATHER_API_KEY');
@@ -50,7 +50,7 @@ class Weather extends Controller
 		Cache::put('lon', $jsonDataZip['lon'], $seconds=15);
 
 		$clientCoord = new Client([
-                        'base_uri' => 'http://api.openweathermap.org/data/2.5/',
+                        'base_uri' => 'https://api.openweathermap.org/data/2.5/',
                 ]);
                 $responseCoord = $clientCoord->request('GET','weather',
                         ['query' => [
