@@ -55,6 +55,8 @@ class TodoOAuthController extends Controller
 					die ('Access token not received');
 
 				$_SESSION['token'] = $jsonData['access_token'];
+				header('Location: https://hayesbm3.451.csi.miamioh.edu/cse451-hayesbm3-web/laravel1-project/public/index.php/todoistoauth');
+				exit;
 			}	
 		}
 
