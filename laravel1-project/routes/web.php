@@ -38,3 +38,4 @@ Route::get("/todoistoauth", [TodoOAuthController::class, 'index']);
 Route::get('/room/add', [RoomController::class,'add']);
 Route::post('/room/add', [RoomController::class, 'addRoom']);
 Route::get('todoistoauth/logout', [TodoOAuthController::class, 'logout']);
+Route::get('s3', function() { return view('s3');});

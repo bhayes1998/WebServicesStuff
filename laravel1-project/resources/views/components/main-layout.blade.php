@@ -57,6 +57,8 @@
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/room/add'>Add Room</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/todo'>Todoist</a>
 <a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/todoistoauth'>Todoist OAuth</a>
+<a class='btn btn-info' href='{{ env('APP_URL')}}/index.php/s3'>S3 Edit</a>
+
 </footer>
 
       </body>

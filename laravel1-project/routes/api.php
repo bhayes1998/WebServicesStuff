@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Weather;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TodoOAuthController;
+use App\Http\Controllers\S3;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::post('weather/{zipcode}', [Weather::class, 'index']);
 Route::get('todo/', [TodoController::class, 'index']);
 Route::get('todo/{token}/{projectID}', [TodoOAuthController::class, 'projects']);
 Route::get('todoistoauth/{cmd}', [TodoOAuthController::class, 'logout']);
+Route::get('s3', [S3::class, 'getBucket']);
+Route::put('s3', [S3::class, 'putBucket']);
