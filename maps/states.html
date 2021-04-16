@@ -1,0 +1,149 @@
+<!doctype html>
+<!--scott campbell, geojson mapping for cse451, spring 2021-->
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<title>Hello, world!</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				       crossorigin=""/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""></script>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"></script>
+		<script src='./states.js'></script>
+		<script>
+			function setStyle(feature) {
+				return {
+					fillColor: 'white',
+					color: 'grey',
+					fillOpacity: 0.0,
+					opacity: 1
+				};
+			}
+			$(document).ready(() => {
+				let lat=39.5107;
+				let lon=-84.7341;
+				var map = L.map('mapid').setView([lat, lon], 4);
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+
+				//find ohio
+				let k = Object.keys(states.features);
+				let ohio = undefined;
+				let california = undefined;
+				let texas = undefined;
+				let montana = undefined;
+				let newyork = undefined;
+				let northcarolina = undefined;
+
+				k.forEach((e) => {
+					if (states.features[e].properties.NAME == "Ohio") {
+						ohio = states.features[e];
+					} else if (states.features[e].properties.NAME == "California") {
+						california = states.features[e];
+					} else if (states.features[e].properties.NAME == "Texas") {
+                                                texas = states.features[e];
+                                        } else if (states.features[e].properties.NAME == "Montana") {
+                                                montana = states.features[e];
+                                        } else if (states.features[e].properties.NAME == "New York") {
+                                                newyork = states.features[e];
+                                        } else if (states.features[e].properties.NAME == "North Carolina") {
+                                                northcarolina = states.features[e];
+                                        }
+					
+				});
+				if (ohio !== undefined)
+					L.geoJSON(ohio,{style:setStyle}).addTo(map);
+				else {
+					alert('could not find ohio');
+				}
+				if (california !== undefined)
+                                        L.geoJSON(california,{style:setStyle}).addTo(map);
+                                else {
+                                        alert('could not find california');
+                                }
+				if (texas !== undefined)
+                                        L.geoJSON(texas,{style:setStyle}).addTo(map);
+                                else {
+                                        alert('could not find texas');
+                                }
+				if (montana !== undefined)
+                                        L.geoJSON(montana,{style:setStyle}).addTo(map);
+                                else {
+                                        alert('could not find montana');
+                                }
+				if (newyork !== undefined)
+                                        L.geoJSON(newyork,{style:setStyle}).addTo(map);
+                                else {
+                                        alert('could not find newyork');
+                                }
+				if (northcarolina !== undefined)
+                                        L.geoJSON(northcarolina,{style:setStyle}).addTo(map);
+                                else {
+                                        alert('could not find north carolina');
+                                }
+
+				L.marker([39.983334, -82.983330]).addTo(map)
+                                        .bindPopup('Columbus')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([38.575764, -121.478851]).addTo(map)
+                                        .bindPopup('Sacremento')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([35.787743, -78.644257]).addTo(map)
+                                        .bindPopup('Raleigh')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([42.652580, -73.756233]).addTo(map)
+                                        .bindPopup('Albany')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([46.595806, -112.027031]).addTo(map)
+                                        .bindPopup('Helena')
+                                        .openPopup();
+                                delta=.001
+				
+				L.marker([30.266666, -97.733330]).addTo(map)
+                                        .bindPopup('Austin')
+                                        .openPopup();
+                                delta=.001
+
+
+			});
+
+		</script>
+		<style>
+html,body {
+	height: 100%;
+}
+#mapid {height: 95%;}
+		</style>
+	</head>
+	<body>
+		<div id="mapid"></div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

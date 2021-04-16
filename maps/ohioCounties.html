@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+	Scott Campbell
+	cse451
+	Mapping example
+	using openstreetmaps as tileserver
+-->
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<title>MapExampl</title>
+
+		<!-- leaflet-->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				       crossorigin=""/>
+
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""></script>
+		<!-- jquery-->
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"></script>
+		<!-- my code-->
+		<script src='ohioCounties.min.js'></script>
+		<script>
+
+
+			$(document).ready(() => {
+				let lat = 40.21696;
+				let lon=-82.946777;
+				var map = L.map('mapid').setView([lat, lon], 8);
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+
+				<!-- outline all ohio counties-->
+				let keys = Object.keys(ohioCounties);
+				keys.forEach((county)=> {
+					L.polyline(ohioCounties[county]).addTo(map);
+				});
+
+				L.marker([39.3995, -84.5613]).addTo(map)
+					.bindPopup('Hamilton')
+					.openPopup();
+				delta=.001
+
+				L.marker([39.103119, -84.512016]).addTo(map)
+                                        .bindPopup('Cincinnati')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([41.374775, -83.651321]).addTo(map)
+                                        .bindPopup('Bowling Green')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([41.3503, -83.1219]).addTo(map)
+                                        .bindPopup('Freemont')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([41.242554, -82.615730]).addTo(map)
+                                        .bindPopup('Norwalk')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([40.720200, -81.874237]).addTo(map)
+                                        .bindPopup('Wooster')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([39.986500, -82.026747]).addTo(map)
+                                        .bindPopup('Zanesville')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([39.983334, -82.983330]).addTo(map)
+                                        .bindPopup('Columbus')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([40.475622, -81.224242]).addTo(map)
+                                        .bindPopup('Canton')
+                                        .openPopup();
+                                delta=.001
+
+				L.marker([40.772004, -80.768134]).addTo(map)
+                                        .bindPopup('Lisbon')
+                                        .openPopup();
+                                delta=.001
+
+
+				<!-- the following creates a popup when clicked shows the lat lon-->
+				var popup=L.popup();
+				function myclick(e) {
+					console.log(e);
+					popup.setLatLng(e.latlng).setContent(e.toString()).openOn(map);
+				}
+				map.on('click',myclick);
+			});
+		</script>
+		<style>
+			html,body {height: 100%;}
+			#mapid {height: 95%;}
+		</style>
+	</head>
+	<body>
+		<div id="mapid"></div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<title>Hello, world!</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				       crossorigin=""/>
+		<!-- Make sure you put this AFTER Leaflet's CSS -->
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""></script>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"></script>
+		<script src='./ohioCounties.min.js'></script>
+		<script>
+			
+
+			$(document).ready(() => {
+				let lat=39.51033;
+				let lon=-84.741727;
+				var map = L.map('mapid').setView([lat, lon], 16);
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+
+				L.marker([39.509892, -84.738401]).addTo(map)
+                                        .bindPopup('The Slant Walk: Head back to Uptown to get some food')
+                                        .openPopup();
+                                delta=.001
+
+				
+				L.marker([39.508742, -84.734501]).addTo(map)
+                                        .bindPopup('The Seal: Check out the seal, but don\'t step on it')
+                                        .openPopup();
+                                delta=.001
+
+
+				L.marker([39.50995, -84.729968]).addTo(map)
+                                        .bindPopup('Cook Field: Come here to walk, jog, stretch, play sports, etc')
+                                        .openPopup();
+                                delta=.001
+
+
+				L.marker([39.510554, -84.733524]).addTo(map)
+					.bindPopup('Benton Hall: Come here for your computer science degree, all it costs is four years of your life')
+					.openPopup();
+				delta=.001
+
+				L.marker([39.51033, -84.741727]).addTo(map)
+                                        .bindPopup('Starbucks: Start off your day right, follow the red line for a tour')
+                                        .openPopup();
+                                delta=.001
+
+				var latlngs = [
+    					[39.510339, -84.741572],
+    					[39.510447, -84.73351],
+    					[39.509894, -84.72987],
+					[39.508781, -84.734345],
+					[39.509838, -84.738301]
+				];
+
+				var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+
+
+
+			var popup=L.popup();
+function myclick(e) {
+				popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(map);
+			}
+				map.on('click',myclick);
+			});
+		</script>
+		<style>
+html,body {
+	height: 100%;
+}
+#mapid {height: 95%;}
+		</style>
+	</head>
+	<body>
+		<div id="mapid"></div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
