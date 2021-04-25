@@ -1,0 +1,4 @@
+#!/bin/bash
+rm *.zip
+zip -r hw.zip index.js node_modules
+aws lambda update-function-code --function-name AlexaSessions --zip-file fileb://hw.zip
