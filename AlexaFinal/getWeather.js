@@ -62,7 +62,7 @@ function getTemp(t) {
                 var options = {
                         'method': 'GET',
                         'hostname': 'api.openweathermap.org',
-                        'path': '/data/2.5/onecall?lat=' + t['cities'][0]['LAT'] + '&lon=' + t['cities'][0]['LAT'] + '&exclude=hourly,daily&appid=' + API_KEY + '&units=imperial',
+                        'path': '/data/2.5/onecall?lat=' + t['cities'][0]['LAT'] + '&lon=' + t['cities'][0]['LON'] + '&exclude=hourly,daily&appid=' + API_KEY + '&units=imperial',
                         'headers': {
                                 'Content-Type': 'application/json'
                         },
