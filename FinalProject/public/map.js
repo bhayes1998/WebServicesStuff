@@ -1,3 +1,5 @@
+let state = '';
+let country = '';
 let lat = '';
 let lon = '';
 $(document).ready(function () {
@@ -29,7 +31,8 @@ $(document).ready(function () {
 					success: (response) => {
 						console.log(response);
 						if (response.status.toLowerCase() == 'ok') {
-
+							state = response['cities'][0]['State'];
+							country = response['cities'][0]['Country'];
 							$('#info').html("<p>City Name: " + response['cities'][0]['CityName'] + ", State: " + response['cities'][0]['State'] + ", Country: " + response['cities'][0]['Country'] + "</p>");
 
 			                                if (response.cities[0]['visits'].length == 0)
@@ -106,9 +109,9 @@ function addVisit() {
         
 	var firstname = document.getElementById('firstname').value;
 	var lastname = document.getElementById('lastname').value;
-	var city = document.getElementById('city').value;
-	var state = document.getElementById('state').value;
-	var country = document.getElementById('country').value;
+	var cityForm = document.getElementById('city').value;
+	var stateForm = document.getElementById('state').value;
+	var countryForm = document.getElementById('country').value;
 	var zip = document.getElementById('zip').value;
 	var liked = ''; 
 	if (document.getElementById('liked').checked == true)
@@ -117,15 +120,38 @@ function addVisit() {
 		liked = 'No';
 
 	var comments = document.getElementById('comments').value;
+
+	if (cityForm.toLowerCase() == city.toLowerCase() && stateForm.toLowerCase() == state.toLowerCase() && country.toLowerCase() == countryForm.toLowerCase()) {
+		let cityData = JSON.stringify({"UID" : "hayesbm3", "Password" : "class", 'CityName' : city, 'State' : state, 'Country' : country, 'LAT' : lat, 'LON' : lon, 'VisitorFirstName' : firstname,
+		'VisitorLastName' : lastname, 'DateOfVisit' : today, 'Liked' : liked, 'Comments' : comments});
+		$.ajax({
+                                        "url": 'https://campbest.451.csi.miamioh.edu/globalCityList/public/api/v1/city',
+                                        "type": "POST",
+                                        "data": cityData,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: (response) =>
+                                        {
+                                                console.log(response);
+                                                location.reload();
+                                        },
+                                        error: (error) => {
+                                                console.log("Fail",error);
+
+                                        }
+
+                                });
+
+	} else {
         $.ajax({
     		type: "GET",
                 url: 'https://api.openweathermap.org/geo/1.0/zip',
                         data: {'zip' : zip, 'appid' : 'b3ea9041c7b81868083b7016b2558f93'},
                         success: function(data)
                         {
-				//let lat = data['lat'];
-				//let lon = data['lon'];
-				let cityData = JSON.stringify({"UID" : "hayesbm3", "Password" : "class", 'CityName' : city, 'State' : state, 'Country' : country, 'LAT' : lat, 'LON' : lon, 'VisitorFirstName' : firstname,
+				let lat = data['lat'];
+				let lon = data['lon'];
+				let cityData = JSON.stringify({"UID" : "hayesbm3", "Password" : "class", 'CityName' : cityForm, 'State' : stateForm, 'Country' : country, 'LAT' : lat, 'LON' : lon, 'VisitorFirstName' : firstname,
                                                 'VisitorLastName' : lastname, 'DateOfVisit' : today, 'Liked' : liked, 'Comments' : comments});
 				$.ajax({
                 			"url": 'https://campbest.451.csi.miamioh.edu/globalCityList/public/api/v1/city',
@@ -143,8 +169,9 @@ function addVisit() {
 
                                         }
 
-                		});
+           		});
                         }
                 });
+	}
 
 }
