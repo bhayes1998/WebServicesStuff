@@ -1,0 +1,4 @@
+#!/bin/bash
+rm *.zip
+zip -r hw.zip index.js node_modules getWeather.js
+aws lambda update-function-code --function-name alexaFinal --zip-file fileb://hw.zip
