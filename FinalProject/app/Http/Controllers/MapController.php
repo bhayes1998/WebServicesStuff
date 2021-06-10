@@ -29,7 +29,7 @@ class MapController extends Controller
 				'lat' => Cache::get('lat'),
 				'lon' => Cache::get('lon'),
 				'units' => 'imperial',
-                                'APPID' => 'b3ea9041c7b81868083b7016b2558f93'
+                                'APPID' => 'APPID'
                         ]]);
                 $bodyCoord = $responseCoord->getBody();
 		$jsonDataCoord = json_decode($bodyCoord,true);
